@@ -11,5 +11,5 @@
     "arrowParens": "always",
     "plugins": ["prettier-plugin-tailwindcss"],
     "printWidth": 100
-  }
+}
   
