@@ -20,7 +20,7 @@ export default function RootLayout({
             <Link href={'/'}>CluBNU</Link>
             <Link href={'/signin'}>로그인</Link>
           </header>
-          <main className="flex h-[calc(100vh-60px)] flex-grow flex-col items-center justify-center pt-[10px]">
+          <main className="flex h-[calc(100vh-60px)] flex-grow flex-col items-center justify-center">
             {children}
           </main>
         </div>
