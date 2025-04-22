@@ -1,6 +1,12 @@
 @import 'tailwindcss';
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-tablet: 40rem;
+  --breakpoint-laptop: 64rem;
+  --breakpoint-desktop: 80rem;
+}
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
