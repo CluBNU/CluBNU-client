@@ -1,4 +1,4 @@
-import Banner from '@/entities/Banner/ui/banner';
+import { Banner } from '@/entities/Banner';
 import {
   Carousel,
   CarouselContent,
@@ -6,8 +6,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/shared/ui/carousel';
-import { readPromotionBanner } from '../api/read-promotion-banner';
+
 import { IPromotionBanner } from '../type';
+import readPromotionBanner from '../api/read-promotion-banner';
 
 export default async function PromotionBanner() {
   // const banners = await readPromotionBanner();

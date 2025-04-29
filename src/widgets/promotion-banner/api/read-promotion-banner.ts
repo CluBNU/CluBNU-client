@@ -1,6 +1,6 @@
 import { IPromotionBanner } from '../type';
 
-export async function readPromotionBanner(): Promise<IPromotionBanner[]> {
+export default async function readPromotionBanner(): Promise<IPromotionBanner[]> {
   const res = await fetch(`${process.env.SERVER_URL}/banners`, {
     method: 'GET',
     // cache: 'no-store',
