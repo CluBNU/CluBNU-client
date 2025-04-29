@@ -13,7 +13,7 @@ export default function CategoryFilter({ categories, selected, onSelect }: IProp
         <Button
           key={categoryItem}
           onClick={() => onSelect(categoryItem)}
-          className={`text-md h-[2.8rem] w-[5rem] cursor-pointer rounded-2xl hover:bg-rose-800 hover:text-white ${categoryItem === selected ? 'bg-rose-800 text-white' : 'bg-gray-300 text-gray-500'}`}>
+          className={`text-md hover:bg-primary h-[2.8rem] w-[5rem] cursor-pointer rounded-2xl hover:text-white ${categoryItem === selected ? 'bg-primary-accent text-white' : 'bg-gray-300 text-gray-500'}`}>
           {categoryItem}
         </Button>
       ))}
