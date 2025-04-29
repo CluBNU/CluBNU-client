@@ -1,21 +1,22 @@
-import ClubHomeCard from '@/entities/Club/ui/club-home-card';
-import { readClubs } from '../api/read-club';
+import { IClub } from '../type';
 
 // Mock data for clubs
 const clubs = [
   {
     clubId: 1,
     name: '코딩 클럽',
-    category: '기술',
+    category: '학술',
     memberCount: 42,
     logoImageUrl: '/images/club/default-club-logo-image.webp',
+    createdAt: '2020-04-28T03:24:00',
   },
   {
     clubId: 2,
     name: '댄스 동아리',
-    category: '예술',
+    category: '문화',
     memberCount: 28,
     logoImageUrl: '/images/club/default-club-logo-image.webp',
+    createdAt: '2025-04-28T03:24:00',
   },
   {
     clubId: 3,
@@ -23,6 +24,7 @@ const clubs = [
     category: '문화',
     memberCount: 15,
     logoImageUrl: '/images/club/default-club-logo-image.webp',
+    createdAt: '2000-04-28T03:24:00',
   },
   {
     clubId: 4,
@@ -30,13 +32,15 @@ const clubs = [
     category: '스포츠',
     memberCount: 22,
     logoImageUrl: '/images/club/default-club-logo-image.webp',
+    createdAt: '1999-04-28T03:24:00',
   },
   {
     clubId: 5,
-    name: '사진 동아리',
-    category: '예술',
+    name: '사진찍고또찍는 동아리',
+    category: '문화',
     memberCount: 18,
     logoImageUrl: '/images/club/default-club-logo-image.webp',
+    createdAt: '2015-04-28T03:24:00',
   },
   {
     clubId: 6,
@@ -44,41 +48,41 @@ const clubs = [
     category: '학술',
     memberCount: 12,
     logoImageUrl: '/images/club/default-club-logo-image.webp',
+    createdAt: '2005-04-28T03:24:00',
   },
   {
     clubId: 7,
     name: '요리 클럽',
-    category: '취미',
+    category: '교양',
     memberCount: 20,
     logoImageUrl: '/images/club/default-club-logo-image.webp',
+    createdAt: '2021-04-28T03:24:00',
   },
   {
     clubId: 8,
     name: '음악 동아리',
-    category: '예술',
+    category: '문화',
     memberCount: 25,
     logoImageUrl: '/images/club/default-club-logo-image.webp',
+    createdAt: '2018-04-28T03:24:00',
   },
 ];
+export default async function readClubs(): Promise<IClub[]> {
+  // const res = await fetch(`${process.env.SERVER_URL}/clubs`, {
+  //   method: 'GET',
+  //   // cache: 'no-store',
+  // });
 
-export default async function ClubList() {
-  //   const clubs = await readClubs();
+  // if (!res.ok) {
+  //   throw new Error('전체 동아리 정보를 가져오는 데 실패했습니다.');
+  // }
 
-  return (
-    <>
-      <div className="mb-4 flex items-center justify-between">
-        <p className="text-muted-foreground text-sm">
-          총 <span className="font-bold">{clubs.length}</span>개의 동아리
-        </p>
-      </div>
-      <ul className="desktop:grid-cols-4 laptop:grid-cols-3 tablet:grid-cols-3 grid grid-cols-1 gap-4">
-        {clubs.map((club) => (
-          <ClubHomeCard
-            key={club.clubId}
-            {...club}
-          />
-        ))}
-      </ul>
-    </>
-  );
+  // return res.json() as Promise<IClub[]>;
+
+  // 임시
+  return new Promise<IClub[]>((resolve, reject) => {
+    setTimeout(() => {
+      resolve(clubs);
+    }, 1000);
+  });
 }

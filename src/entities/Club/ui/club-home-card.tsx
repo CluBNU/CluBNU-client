@@ -20,7 +20,7 @@ export default function ClubHomeCard({
         key={clubId}
         className="overflow-hidden">
         <CardContent className="">
-          <div className="flex flex-row">
+          <div className="flex w-full flex-row">
             {/* 동아리 로고 이미지 */}
             <div className="mr-6 flex h-10 w-10 items-center justify-center overflow-hidden rounded-full">
               <ClubLogoImage
@@ -29,8 +29,8 @@ export default function ClubHomeCard({
               />
             </div>
             {/* 동아리 이름 및 분과 */}
-            <div className="">
-              <CardTitle className="text-md">{name}</CardTitle>
+            <div className="flex w-full flex-col">
+              <CardTitle className="text-md truncate">{name}</CardTitle>
               <CardDescription className="text-[0.8rem]">{category}</CardDescription>
             </div>
           </div>
