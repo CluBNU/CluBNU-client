@@ -13,6 +13,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isMockingEnabled = process.env.NEXT_PUBLIC_API_MOCKING === 'enabled';
+
   return (
     <html lang="en">
       <body>
@@ -22,7 +24,7 @@ export default function RootLayout({
             <Link href={'/signin'}>로그인</Link>
           </header>
           <main className="flex h-[calc(100vh-60px)] flex-grow flex-col items-center justify-center">
-            <MSWProvider>{children}</MSWProvider>
+            {isMockingEnabled ? <MSWProvider>{children}</MSWProvider> : <>{children}</>}
           </main>
         </div>
       </body>

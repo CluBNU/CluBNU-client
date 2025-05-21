@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "cross-env NEXT_PUBLIC_API_MOCKING=disabled next dev",
     "build": "next build",
     "start": "next start",
-    "mock": "concurrently \"next dev\" \"npx tsx watch src/__mocks__/node.ts\"",
+    "mock": "cross-env NEXT_PUBLIC_API_MOCKING=enabled concurrently \"next dev\" \"npx tsx watch src/__mocks__/node.ts\"",
     "lint": "next lint"
   },
   "dependencies": {
@@ -30,6 +30,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^7.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
     "eslint-config-prettier": "^10.1.2",
