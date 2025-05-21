@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Link from 'next/link';
+import MSWProvider from '@/applications/msw-provider';
 
 export const metadata: Metadata = {
   title: 'CluBNU',
@@ -21,7 +22,7 @@ export default function RootLayout({
             <Link href={'/signin'}>로그인</Link>
           </header>
           <main className="flex h-[calc(100vh-60px)] flex-grow flex-col items-center justify-center">
-            {children}
+            <MSWProvider>{children}</MSWProvider>
           </main>
         </div>
       </body>
