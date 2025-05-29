@@ -1,4 +1,4 @@
-import { IOAuthConfig, OAuthProvider } from "../types/type";
+import { IOAuthConfig, OAuthProvider } from '../types/type';
 
 export const oauthConfigs: Record<OAuthProvider, IOAuthConfig> = {
   kakao: {
@@ -6,7 +6,8 @@ export const oauthConfigs: Record<OAuthProvider, IOAuthConfig> = {
     clientId: process.env.KAKAO_CLIENT_ID || '',
     redirectUri: process.env.KAKAO_REDIRECT_URI || '',
     responseType: 'code',
+    scope: 'openid',
     imageSrc: '/images/auth/kakao_login_large_wide.webp',
-    imageAlt: '카카오 로그인 버튼'
+    imageAlt: '카카오 로그인 버튼',
   },
 };
