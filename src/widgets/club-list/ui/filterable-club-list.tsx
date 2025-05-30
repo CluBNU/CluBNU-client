@@ -38,7 +38,7 @@ export default function FilterableClubList({ initialItems, selectableCategories 
           onSelect={setCategory}
         />
       </div>
-      <div className="w-full px-8">
+      <div className="desktop:px-12 laptop:px-10 tablet:px-6 w-full px-2">
         {/* 정렬 필터 */}
         <div className="ml-auto flex flex-row justify-end py-6">
           <SortOrderFilter

@@ -52,20 +52,20 @@ export default async function PromotionBanner() {
   ];
 
   return (
-    <Carousel className="w-full">
-      <CarouselContent>
-        {banners.map((bannerItem) => (
-          <CarouselItem
-            key={bannerItem.bannerId}
-            className="basis-1/3">
-            <div className="relative h-[300px] w-full overflow-hidden rounded-xl md:h-[400px]">
-              <Banner bannerItem={bannerItem} />
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious className="left-4" />
-      <CarouselNext className="right-4" />
-    </Carousel>
+    <div className="w-full">
+      <Carousel className="mx-auto w-full max-w-[50rem]">
+        <CarouselContent>
+          {banners.map((banner) => (
+            <CarouselItem key={banner.bannerId}>
+              <div className="tablet:h-[16rem] relative h-[14rem] w-full overflow-hidden rounded-xl">
+                <Banner bannerItem={banner} />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="left-4" />
+        <CarouselNext className="right-4" />
+      </Carousel>
+    </div>
   );
 }

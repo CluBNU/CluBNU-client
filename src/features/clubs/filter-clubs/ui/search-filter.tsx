@@ -13,7 +13,7 @@ export default function SearchFilter({
   placeholder = '검색어를 입력하세요',
 }: IProps) {
   return (
-    <div className="relative m-4 w-[30rem] max-w-[50rem] min-w-[20rem]">
+    <div className="relative m-4 w-full max-w-[30rem]">
       <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform" />
       <Input
         placeholder={placeholder}

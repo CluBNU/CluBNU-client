@@ -8,7 +8,7 @@ interface IProps {
 }
 export default function CategoryFilter({ categories, selected, onSelect }: IProps) {
   return (
-    <div className="m-4 flex w-fit flex-row gap-4">
+    <div className="flex w-full flex-row justify-center gap-4 overflow-auto">
       {categories.map((categoryItem) => (
         <Button
           key={categoryItem}
