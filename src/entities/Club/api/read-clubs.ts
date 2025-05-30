@@ -83,6 +83,6 @@ export default async function readClubs(): Promise<IClub[]> {
   return new Promise<IClub[]>((resolve, reject) => {
     setTimeout(() => {
       resolve(clubs);
-    }, 1000);
+    }, 500);
   });
 }
