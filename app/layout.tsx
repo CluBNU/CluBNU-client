@@ -23,9 +23,7 @@ export default function RootLayout({
             <Link href={'/'}>CluBNU</Link>
             <Link href={'/signin'}>로그인</Link>
           </header>
-          <main className="flex h-[calc(100vh-60px)] flex-grow flex-col items-center justify-center">
-            {isMockingEnabled ? <MSWProvider>{children}</MSWProvider> : <>{children}</>}
-          </main>
+          <main>{isMockingEnabled ? <MSWProvider>{children}</MSWProvider> : <>{children}</>}</main>
         </div>
       </body>
     </html>
