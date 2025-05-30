@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Link from 'next/link';
+import MSWProvider from '@/applications/msw-provider';
 
 export const metadata: Metadata = {
   title: 'CluBNU',
@@ -12,6 +13,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isMockingEnabled = process.env.NEXT_PUBLIC_API_MOCKING === 'enabled';
+
   return (
     <html lang="en">
       <body>
@@ -20,7 +23,9 @@ export default function RootLayout({
             <Link href={'/'}>CluBNU</Link>
             <Link href={'/signin'}>로그인</Link>
           </header>
-          <main>{children}</main>
+          <main className="flex h-[calc(100vh-60px)] flex-grow flex-col items-center justify-center">
+            {isMockingEnabled ? <MSWProvider>{children}</MSWProvider> : <>{children}</>}
+          </main>
         </div>
       </body>
     </html>
