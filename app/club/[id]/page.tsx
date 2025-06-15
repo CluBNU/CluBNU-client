@@ -1,15 +1,39 @@
 import { notFound } from 'next/navigation';
-import { ClubProfile, isRecruitmentPeriod, readClub } from '@/entities/Club';
+import { ClubProfile, isRecruitmentPeriod } from '@/entities/Club';
 import { Button } from '@/shared/ui/button';
 import { ClubDetailTabs } from '@/widgets/club-detail';
+import { query } from '@/applications/apollo-client';
+import { GET_CLUB_PROFILE } from '@/entities/Club/api/graphql/club.graphql';
+import { IClub } from '@/entities/Club/type';
+
+interface IClubProfileResponseData {
+  clubProfile: Pick<
+    IClub,
+    | 'clubId'
+    | 'name'
+    | 'category'
+    | 'logoImageUrl'
+    | 'memberCount'
+    | 'president'
+    | 'location'
+    | 'recruitmentPeriod'
+    | 'goal'
+  >;
+}
 
 export default async function ClubDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const club = await readClub({ clubId: id });
 
-  if (!club) {
+  const { data } = await query<IClubProfileResponseData>({
+    query: GET_CLUB_PROFILE,
+    variables: { clubId: parseInt(id) },
+  });
+  const { clubProfile } = data;
+
+  if (!clubProfile) {
     notFound();
   }
+
   const {
     clubId,
     recruitmentPeriod,
@@ -20,7 +44,7 @@ export default async function ClubDetailPage({ params }: { params: Promise<{ id:
     president,
     location,
     goal,
-  } = club;
+  } = clubProfile;
 
   return (
     <div className="tablet:flex-row flex min-h-screen w-full flex-col">

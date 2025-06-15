@@ -1,10 +1,20 @@
 import { FilterableClubList } from '@/widgets/club-list';
-import { readClubs } from '@/entities/Club';
 import { PromotionBanner } from '@/widgets/promotion-banner';
+import { query } from '@/applications/apollo-client';
+import { GET_CLUBS, IClub } from '@/entities/Club';
 
-const categories = ['전체', '교양', '학술', '문화', '봉사', '체육', '종교'];
+interface IResponseData {
+  clubs: Pick<
+    IClub,
+    'clubId' | 'name' | 'category' | 'logoImageUrl' | 'memberCount' | 'createdAt'
+  >[];
+}
+
+// PAGE: 홈화면
 export default async function MainPage() {
-  const clubs = await readClubs();
+  const {
+    data: { clubs },
+  } = await query<IResponseData>({ query: GET_CLUBS });
 
   return (
     <div className="flex flex-col gap-8 pb-12">
@@ -16,10 +26,7 @@ export default async function MainPage() {
       </section>
       {/* 동아리 목록 */}
       <section className="">
-        <FilterableClubList
-          initialItems={clubs}
-          selectableCategories={categories}
-        />
+        <FilterableClubList initialItems={clubs} />
       </section>
     </div>
   );
