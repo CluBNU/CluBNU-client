@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/tabs';
-import { ClubFeed, ClubIntro } from '@/entities/Club';
+import { ClubFeed, ClubIntroduction } from '@/entities/Club';
 
 // 동아리 상세 탭
 export default function ClubDetailTabs({ clubId }: { clubId: number }) {
@@ -14,7 +14,7 @@ export default function ClubDetailTabs({ clubId }: { clubId: number }) {
       <TabsContent
         value="intro"
         className="mt-4 sm:mt-6">
-        <ClubIntro clubId={clubId} />
+        <ClubIntroduction clubId={clubId} />
       </TabsContent>
       <TabsContent
         value="feed"
