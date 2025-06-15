@@ -6,7 +6,14 @@ export const clubHandlers = [
   graphql.query('GetClubs', () => {
     return HttpResponse.json({
       data: {
-        clubs: clubs,
+        clubs: clubs.map((club) => ({
+          clubId: club.clubId,
+          name: club.name,
+          category: club.category,
+          logoImageUrl: club.logoImageUrl,
+          memberCount: club.memberCount,
+          createdAt: club.createdAt,
+        })),
       },
     });
   }),
