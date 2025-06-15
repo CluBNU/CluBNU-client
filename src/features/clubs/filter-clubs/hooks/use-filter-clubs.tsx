@@ -3,7 +3,10 @@ import type { IClub } from '@/entities/Club';
 
 // 동아리 필터링
 interface IProps {
-  initialItems: IClub[];
+  initialItems: Pick<
+    IClub,
+    'clubId' | 'name' | 'category' | 'logoImageUrl' | 'memberCount' | 'createdAt'
+  >[];
   searchText: string;
   category: string;
   sortOrder?: string;
@@ -15,7 +18,7 @@ export default function useFilterClubs({
   sortOrder = 'latest',
 }: IProps) {
   return useMemo(() => {
-    let filtered: IClub[] = initialItems;
+    let filtered = initialItems;
 
     // 검색어로 필터링
     if (searchText) {
