@@ -1,27 +1,20 @@
 import { Card, CardContent } from '@/shared/ui/card';
-import { IClub } from '../type';
+import { IClubProfile } from '../type';
 import Image from 'next/image';
 
-export default function ClubProfile({
-  logoImageUrl,
-  name,
-  category,
-  memberCount,
-  president,
-  location,
-  recruitmentPeriod,
-  goal,
-}: Pick<
-  IClub,
-  | 'logoImageUrl'
-  | 'name'
-  | 'category'
-  | 'memberCount'
-  | 'president'
-  | 'location'
-  | 'recruitmentPeriod'
-  | 'goal'
->) {
+// UI: 동아리 프로필
+export default function ClubProfile({ clubData }: { clubData: IClubProfile }) {
+  const {
+    logoImageUrl,
+    name,
+    category,
+    memberCount,
+    president,
+    location,
+    recruitmentPeriod,
+    goal,
+  } = clubData;
+
   return (
     <Card className="p-0">
       <CardContent className="p-6">
