@@ -10,12 +10,17 @@ import {
 import { ClubHomeCard } from '@/entities/Club';
 import type { IClub } from '@/entities/Club';
 
+// 개선 필요: 타입스크립트 활용
+const categories = ['전체', '교양', '학술', '문화', '봉사', '체육', '종교'];
+
 // 필터링된 동아리 목록
 interface IProps {
-  initialItems: IClub[];
-  selectableCategories: string[];
+  initialItems: Pick<
+    IClub,
+    'clubId' | 'name' | 'category' | 'logoImageUrl' | 'memberCount' | 'createdAt'
+  >[];
 }
-export default function FilterableClubList({ initialItems, selectableCategories }: IProps) {
+export default function FilterableClubList({ initialItems }: IProps) {
   const [searchText, setSearchText] = useState(''); // 검색어 상태
   const [category, setCategory] = useState('전체'); // 분류 상태
   const [sortOrder, setSortOrder] = useState('latest'); // 정렬 상태
@@ -33,7 +38,7 @@ export default function FilterableClubList({ initialItems, selectableCategories 
         />
         {/* 분류 필터 */}
         <CategoryFilter
-          categories={selectableCategories}
+          categories={categories}
           selected={category}
           onSelect={setCategory}
         />

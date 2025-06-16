@@ -2,16 +2,15 @@ import { Card, CardContent, CardDescription, CardFooter, CardTitle } from '@/sha
 import { IClub } from '../type';
 import ClubLogoImage from './club-logo-image';
 import Link from 'next/link';
+import { memo } from 'react';
 
-export interface IClubHomeCardProps
-  extends Pick<IClub, 'clubId' | 'name' | 'category' | 'logoImageUrl' | 'memberCount'> {}
-export default function ClubHomeCard({
+export default memo(function ClubHomeCard({
   clubId,
   name,
   category,
   logoImageUrl,
   memberCount,
-}: IClubHomeCardProps) {
+}: Pick<IClub, 'clubId' | 'name' | 'category' | 'logoImageUrl' | 'memberCount'>) {
   return (
     <Link
       href={`/club/${clubId}`}
@@ -44,4 +43,4 @@ export default function ClubHomeCard({
       </Card>
     </Link>
   );
-}
+});
