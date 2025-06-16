@@ -1,26 +1,28 @@
-import {
-  GET_CLUBS,
-  GET_CLUB_PROFILE,
-  GET_CLUB_INTRODUCTION,
-  // GET_CLUB_FEEDS,
-} from './api/graphql/club.graphql';
-import ClubHomeCard from './ui/club-home-card';
-import ClubLogoImage from './ui/club-logo-image';
-import isRecruitmentPeriod from './utils/is-recruitment-period';
-import ClubProfile from './ui/club-profile';
-import ClubIntroduction from './ui/club-introduction';
-import ClubFeed from './ui/club-feed';
+// Type exports
+export type { IClub } from './type';
 
+// Most commonly used exports for convenience
 export {
+  // UI Components
   ClubHomeCard,
   ClubLogoImage,
-  isRecruitmentPeriod,
   ClubProfile,
+  ClubApplyButton,
   ClubIntroduction,
   ClubFeed,
+  ClubProfileSkeleton,
+  ApplyButtonSkeleton,
+} from './ui';
+
+export {
+  // GraphQL Queries
   GET_CLUBS,
   GET_CLUB_PROFILE,
   GET_CLUB_INTRODUCTION,
   // GET_CLUB_FEEDS,
-};
-export type { IClub } from './type';
+} from './api';
+
+export {
+  // Utilities
+  isRecruitmentPeriod,
+} from './utils';
