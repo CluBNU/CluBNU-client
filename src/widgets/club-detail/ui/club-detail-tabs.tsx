@@ -1,8 +1,9 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/tabs';
 import { ClubFeed, ClubIntroduction } from '@/entities/Club';
+import { Suspense } from 'react';
 
-// 동아리 상세 탭
-export default function ClubDetailTabs({ clubId }: { clubId: number }) {
+// WIDGET: 동아리 상세 탭
+export default async function ClubDetailTabs({ clubId }: { clubId: number }) {
   return (
     <Tabs
       className="tablet:mt-6 mt-2"
@@ -14,7 +15,9 @@ export default function ClubDetailTabs({ clubId }: { clubId: number }) {
       <TabsContent
         value="intro"
         className="mt-4 sm:mt-6">
-        <ClubIntroduction clubId={clubId} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ClubIntroduction clubId={clubId} />
+        </Suspense>
       </TabsContent>
       <TabsContent
         value="feed"
