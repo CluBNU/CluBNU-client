@@ -17,7 +17,7 @@ export const GET_CLUBS = gql`
 // 동아리 단건 프로필 조회 (상세화면)
 export const GET_CLUB_PROFILE = gql`
   query GetClubProfile($clubId: Int!) {
-    club(clubId: $clubId) {
+    clubProfile(clubId: $clubId) {
       clubId
       name
       category
