@@ -15,23 +15,26 @@ export interface IClubProfile {
 
 export interface IClub extends IClubProfile {
   description: string; // 동아리 설명
-  createdAt: string; // 동아리 생성일
-  updatedAt?: string; // 동아리 수정일
-  deletedAt?: string; // 동아리 삭제일
-  isPublic?: boolean; // 공개 여부
-  isDeleted?: boolean; // 삭제 여부
-  isFavorite?: boolean; // 즐겨찾기 여부
+  createdAt: string; // 동아리 개설일
+  // fix: 생성일 개설일 구별 필요: createdAt을 생성일로 전체적으로 바꿔야 함 + 개설일은 별도로 추가
+  // createdAt: string; // 동아리 생성일
   intro: {
     image?: string; // 동아리 소개 이미지 URL
     introduction: string; // 동아리 소개 내용
   };
-  feed: IClubFeed[];
+  feed?: IClubFeed[];
 }
 
 export interface IClubFeed {
   feedId: number; // 피드 ID
   content: string; // 피드 내용
   imageUrl?: string; // 피드 이미지 URL
-  createdAt: string; // 피드 작성일
-  updatedAt?: string; // 피드 수정일
+}
+
+export interface IClubFormState {
+  success: boolean;
+  message: string;
+  data: unknown | null;
+  shouldRedirect?: boolean;
+  redirectTo?: string;
 }
