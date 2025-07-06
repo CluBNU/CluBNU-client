@@ -3,9 +3,8 @@
 import { useState } from 'react';
 import { Button } from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input';
-import { Badge } from '@/shared/ui/badge';
 import { Card } from '@/shared/ui/card';
-import { Edit, Trash2, Search } from 'lucide-react';
+import { Edit, Trash2 } from 'lucide-react';
 import type { IAdminClub } from '../type';
 import Image from 'next/image';
 
@@ -53,28 +52,15 @@ export default function ClubManagementTable() {
 
   return (
     <div className="space-y-6">
-      {/* 헤더 */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold">동아리 관리</h1>
-          <p className="text-gray-600">
-            등록된 동아리를 관리하고 새로운 동아리를 추가할 수 있습니다.
-          </p>
-        </div>
-      </div>
-
       {/* 검색 */}
-      <Card className="p-4">
-        <div className="flex items-center gap-2">
-          <Search className="h-4 w-4 text-gray-400" />
-          <Input
-            placeholder="동아리명 또는 분과로 검색..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="max-w-md"
-          />
-        </div>
-      </Card>
+      <div className="flex items-center">
+        <Input
+          placeholder="동아리명 또는 분과로 검색..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="max-w-md"
+        />
+      </div>
 
       {/* 테이블 */}
       <Card>
@@ -82,12 +68,11 @@ export default function ClubManagementTable() {
           <table className="w-full">
             <thead>
               <tr className="border-b">
-                <th className="p-4 text-left font-medium">동아리명</th>
-                <th className="p-4 text-left font-medium">분과</th>
-                <th className="p-4 text-left font-medium">회원 수</th>
-                <th className="p-4 text-left font-medium">상태</th>
-                <th className="p-4 text-left font-medium">생성일</th>
-                <th className="p-4 text-left font-medium">작업</th>
+                <th className="w-1/3 p-4 text-left font-medium">동아리명</th>
+                <th className="tablet:table-cell hidden w-1/6 p-4 text-left font-medium">분과</th>
+                <th className="tablet:table-cell hidden w-1/6 p-4 text-left font-medium">
+                  회원 수
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -102,29 +87,28 @@ export default function ClubManagementTable() {
                         alt={club.name}
                         width={40}
                         height={40}
-                        className="h-10 w-10 rounded-full object-cover"
+                        className="tablet:flex hidden h-10 w-10 flex-shrink-0 rounded-full object-cover"
                       />
-                      <div>
-                        <div className="font-medium">{club.name}</div>
-                      </div>
+                      <div className="truncate font-medium">{club.name}</div>
                     </div>
                   </td>
-                  <td className="p-4">
-                    <Badge variant="outline">{club.category}</Badge>
+                  <td className="tablet:table-cell hidden p-4">{club.category}</td>
+                  <td className="tablet:table-cell hidden p-4 whitespace-nowrap">
+                    {club.memberCount}명
                   </td>
-                  <td className="p-4">{club.memberCount}명</td>
-                  {/* <td className="p-4">{new Date(club.개설일).toLocaleDateString('ko-KR')}</td> */}
-                  <td className="p-4">
+                  <td className="p-4 whitespace-nowrap">
                     <div className="flex items-center gap-2">
                       <Button
                         variant="ghost"
-                        size="sm">
+                        size="sm"
+                        title="수정">
                         <Edit className="h-4 w-4" />
                       </Button>
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="text-red-600 hover:text-red-700">
+                        className="text-red-600 hover:text-red-700"
+                        title="삭제">
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     </div>
