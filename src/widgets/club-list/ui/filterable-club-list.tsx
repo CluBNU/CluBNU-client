@@ -7,11 +7,7 @@ import {
   SortOrderFilter,
   useFilterClubs,
 } from '@/features/clubs/filter-clubs';
-import { ClubHomeCard } from '@/entities/Club';
-import type { IClub } from '@/entities/Club';
-
-// 개선 필요: 타입스크립트 활용
-const categories = ['전체', '교양', '학술', '문화', '봉사', '체육', '종교'];
+import { ClubHomeCard, CLUB_CATEGORIES, type IClub } from '@/entities/Club';
 
 // 필터링된 동아리 목록
 interface IProps {
@@ -38,7 +34,7 @@ export default function FilterableClubList({ initialItems }: IProps) {
         />
         {/* 분류 필터 */}
         <CategoryFilter
-          categories={categories}
+          categories={CLUB_CATEGORIES}
           selected={category}
           onSelect={setCategory}
         />
