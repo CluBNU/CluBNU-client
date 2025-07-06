@@ -1,1 +1,1 @@
-export { AdminSidebar } from './ui/admin-sidebar';
+export { AdminSidebar, AdminBottomNav } from './ui/admin-sidebar';

@@ -42,10 +42,41 @@ export function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <Card className="h-fit w-64">
-      <div className="p-4">
-        <h2 className="mb-4 text-lg font-semibold">관리자 메뉴</h2>
-        <nav className="space-y-2">
+    <Card className="h-fit w-64 gap-0 px-4 py-6">
+      <span className="text-md mb-4 pl-2 font-semibold">관리자 메뉴</span>
+      <nav className="space-y-2">
+        {menuItems.map((item) => {
+          const Icon = item.icon;
+          const isActive =
+            pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href));
+
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`flex items-center gap-3 rounded-md px-3 py-2 transition-colors ${
+                isActive
+                  ? 'bg-blue-100 font-medium text-blue-700'
+                  : 'text-gray-600 hover:bg-gray-100'
+              }`}>
+              <Icon className="h-4 w-4" />
+              {item.title}
+            </Link>
+          );
+        })}
+      </nav>
+    </Card>
+  );
+}
+
+// 모바일용 하단 네비게이션
+export function AdminBottomNav() {
+  const pathname = usePathname();
+
+  return (
+    <div className="tablet:hidden fixed right-0 bottom-0 left-0 z-50 border-t border-gray-200 bg-white">
+      <div className="scrollbar-hide flex overflow-x-auto px-2 py-2">
+        <div className="flex min-w-max gap-1">
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive =
@@ -55,18 +86,16 @@ export function AdminSidebar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 rounded-md px-3 py-2 transition-colors ${
-                  isActive
-                    ? 'bg-blue-100 font-medium text-blue-700'
-                    : 'text-gray-600 hover:bg-gray-100'
+                className={`flex min-w-[80px] flex-col items-center justify-center rounded-md px-3 py-2 transition-colors ${
+                  isActive ? 'bg-blue-100 text-blue-700' : 'text-gray-600 hover:bg-gray-100'
                 }`}>
-                <Icon className="h-4 w-4" />
-                {item.title}
+                <Icon className="mb-1 h-5 w-5" />
+                <span className="truncate text-xs font-medium">{item.title}</span>
               </Link>
             );
           })}
-        </nav>
+        </div>
       </div>
-    </Card>
+    </div>
   );
 }
