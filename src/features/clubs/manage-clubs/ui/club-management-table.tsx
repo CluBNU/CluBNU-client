@@ -4,9 +4,10 @@ import { useState } from 'react';
 import { Button } from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input';
 import { Card } from '@/shared/ui/card';
-import { Edit, Trash2 } from 'lucide-react';
+import { Edit } from 'lucide-react';
 import type { IAdminClub } from '../type';
 import Image from 'next/image';
+import ClubDeleteButton from './club-delete-button';
 
 // Mock data - 실제로는 API에서 가져올 데이터
 const mockClubs: IAdminClub[] = [
@@ -104,13 +105,7 @@ export default function ClubManagementTable() {
                         title="수정">
                         <Edit className="h-4 w-4" />
                       </Button>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-red-600 hover:text-red-700"
-                        title="삭제">
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
+                      <ClubDeleteButton clubId={club.clubId} />
                     </div>
                   </td>
                 </tr>

@@ -9,6 +9,8 @@
   --color-primary: oklch(45.5% 0.188 13.697);
   --color-primary-accent: oklch(41% 0.159 10.272);
   --color-muted-foreground: oklch(0.556 0 0);
+  --color-danger: oklch(63.7% 0.237 25.331); /* red-500 */
+  --color-danger-accent: oklch(57.7% 0.245 27.325); /* red-600 */
 }
 @theme inline {
   --height-top-navbar: var(--top-navbar);
