@@ -55,6 +55,17 @@ export const clubHandlers = [
         });
       }
 
+      // DeleteClub 뮤테이션 처리
+      if (body?.query?.includes('mutation DeleteClub')) {
+        const { clubId } = body?.variables;
+
+        return HttpResponse.json({
+          data: {
+            deleteClub: true,
+          },
+        });
+      }
+
       // 다른 GraphQL 요청은 기본 핸들러로 처리
       return HttpResponse.text('Unhandled GraphQL request', { status: 404 });
     } catch (error) {
